@@ -26,6 +26,14 @@ const int numReadings = 10;     // Number of readings to take for a temperature 
 const int neoPixel_1 = 2;       // Neopixel on pin 2
 const int neoPixel_2 = 8;       // On board NeoPixel
 
+// Measurement variable definitions
+int sum = 0;
+int tempReading = 0;
+int lightLevel = 0;
+float voltage = 0;
+float temperatureC = 0;
+float temperatureF = 0;
+
 // Init NeoPixels
 Adafruit_NeoPixel neo_temp = Adafruit_NeoPixel(1, neoPixel_1, NEO_GRB + NEO_KHZ800);
 Adafruit_NeoPixel neo_light = Adafruit_NeoPixel(1, neoPixel_2, NEO_GRB + NEO_KHZ800);
@@ -89,20 +97,20 @@ void setup() {
 // Runs on a constant loop after setup
 void loop() {
   // Read and average temperature
-  long sum = 0;
+  sum = 0;
   for (int i = 0; i < numReadings; i++) {
     sum += analogRead(tempPin);
     delay(10);
   }
-  int tempReading = sum / numReadings;
+  tempReading = sum / numReadings;
   
   // Convert to F and C, based on temp example and datasheet
-  float voltage = tempReading * 3.3 / 1024.0;
-  float temperatureC = (voltage - 0.5) * 100.0;
-  float temperatureF = (temperatureC * 9.0 / 5.0) + 32.0;
+  voltage = tempReading * 3.3 / 1024.0;
+  temperatureC = (voltage - 0.5) * 100.0;
+  temperatureF = (temperatureC * 9.0 / 5.0) + 32.0;
 
   // Read light sensor
-  int lightLevel = analogRead(lightPin);
+  lightLevel = analogRead(lightPin);
 
   // Color the NeoPixels based on sensor readings
   color_temp(neo_temp, temperatureF);
