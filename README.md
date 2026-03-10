@@ -162,10 +162,10 @@ This creates opposing velcro arms that will overlap when wrapped around a backpa
 
 ## Code
 ### Getting Started
-The coding for this project is done using the Arduino IDE. If you have not yet set up your Flora in the Arduino IDE, now is a good time to do so. I recommend [this guide](https://learn.adafruit.com/adafruit-arduino-ide-setup/arduino-1-dot-6-x-ide) to get started.
+The coding for this project is done using the Arduino IDE. If you have not yet set up your Flora in the Arduino IDE, now is a good time to do so. I recommend [this guide](https://learn.adafruit.com/adafruit-arduino-ide-setup/arduino-1-dot-6-x-ide) to get started. All code for this project can be found in `Calibrate.ino`. Donwload this code, open it in the Arduino IDE, and upload it to your board to get started.
 
 ### Overview
-The code for this project uses defined light and temperature threshold values to set the ranges for poor/sub-optimal/optimal conditions. The top of the code contains the block defining these values for light and temperature.
+The code for this project is contained in `Calibrate.ino`, and uses defined light and temperature threshold values to set the ranges for poor/sub-optimal/optimal conditions. The top of the code contains the block defining these values for light and temperature.
 ```C
 #define LIGHT_1 20
 #define LIGHT_2 100
