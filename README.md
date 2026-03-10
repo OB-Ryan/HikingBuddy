@@ -184,7 +184,7 @@ These are the default values for the given ranges, which I determined to be opti
 - `_4` is the upper threshold for sub-optimal quality. When the data is between `_3` and `_4`, the corresponding NeoPixel will be yellow.
 - Anything above `_4` is bad quality. When the data is above `_4`, the corresponding NeoPixel will be red.
 
-**Note that all `TEMP_*` values are in Fahrenheit, and all `LIGHT_*` values are raw analog sensor readings (0–1023 on a 10-bit ADC).**
+**Note that all `TEMP_*` values are in Fahrenheit, and all `LIGHT_*` values are raw analog sensor readings (0–1023).**
 
 There are several functions in the code to achieve this behavior:
 - `init_neo()` — Initializes a given NeoPixel object, setting its brightness to 50 and its initial state to OFF.
@@ -201,6 +201,20 @@ There is another file called `Calibrate.ino` that will help you define more pers
 
 ![CalibrationExample](tutorial_images/CalibrationExample.png)
 
+
+## Care and Use
+### Battery Life
+The bulk of the power draw from the HikingBuddy comes from the NeoPixel LEDs. NeoPixel LEDs (and all LEDs) draw a different amount of current per color. Red will draw less current than white, or green. For this reason, it is difficult to define an exact battery life for the HikingBuddy, since the color of the NeoPixel LEDs is expected to change often. Worst case scenario (both NeoPixels constant white color), the 3.7v 350mAh battery linked above will power the HikingBuddy for approximatley 1 hour and 30 minutes. Some ways to improve battery life include:
+- Decrease the brighness of the NeoPixel LEDs (Code change)
+- Flash the NeoPixel LEDs instead of of having them constantly on (Code change)
+- Use a larger battery. Just make sure the wires are long enough to reach the JST connector, and it fits in the battery pouch. (Component change)
+
+### Washability
+Taking the HikingBuddy on adventures will probably result in the fabric and electornics getting dirty. The Flora is designed to be a washable component, and the rest of the parts should hold up to gentle washing. To was your HikingBuddy:
+- Turn the Flora off using the switch on the board
+- Disconnect and remove the battery from the JST connector
+- Use a damp cloth to gently wipe and clean the board, components, and fabric
+- Wait for any wet components or fabric to fully dry before reconnecting the battery and switching the Flora back on
 
 ## Conclusion
 Congratulations on building the HikingBuddy! You have successfully assembled an e-textile wearable that uses temperature and light sensors to give real time data feedback about hiking weather conditions through NeoPixel LEDs. This project included many opurtunities to gain experience with the Adafruit Flora, conductive thread sewing, and the Arduino IDE.
